@@ -1,20 +1,8 @@
 <?php
-
-$host = "localhost";
-$db = "pokedexdb";
-$user = "root";
-$pass = "";
-
+include 'db.php';
 $search = $_GET['search'] ?? '';
 $type   = $_GET['type'] ?? '';
 $sort   = $_GET['sort'] ?? 'dex_number';
-
-try {
-    $pdo = new PDO("mysql:host=$host;dbname=$db;charset=utf8", $user, $pass);
-} catch(PDOException $e) {
-    die("Database error: " . $e->getMessage());
-}
-
 
 $sql = "SELECT * FROM pokemon WHERE 1";
 $params = [];
@@ -81,6 +69,7 @@ $pokemon = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 <div class="pokedex">
 <?php foreach($pokemon as $p): ?>
+    <a href="pokemon_detail.php?id=<?= $p['id'] ?>">
 <div class="card">
     <img src="<?= htmlspecialchars($p['image_path']) ?>" alt="<?= htmlspecialchars($p['name']) ?>">
     <h2>#<?= $p['dex_number'] ?> <?= htmlspecialchars($p['name']) ?></h2>
@@ -89,6 +78,7 @@ $pokemon = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <?= $p['type2'] ? " / ".htmlspecialchars($p['type2']) : "" ?>
     </p>
 </div>
+</a>
 <?php endforeach; ?>
 </div>
 
