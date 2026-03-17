@@ -6,7 +6,7 @@ Een soort pokedex die info uit de database trekt, gemaakt door groep 4.
 
 ## Appendix
 
-De database draait op MySQL en de gebruikte coding-languages zijn: php, html en css
+De database draait op MySQL en de gebruikte coding-languages zijn: sql, html en css
 
 ## Authors
 
