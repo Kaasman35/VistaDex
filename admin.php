@@ -1,17 +1,6 @@
 <?php
-$host = "localhost";
-$db = "pokedexdb";
-$user = "root";
-$pass = "";
-
-try {
-    $pdo = new PDO("mysql:host=$host;dbname=$db;charset=utf8", $user, $pass);
-} catch(PDOException $e){
-    die("Database error: ".$e->getMessage());
-}
-
+include 'db.php';
 $message = '';
-
 
 if(isset($_POST['add'])){
     $id = $_POST['id'];
@@ -40,7 +29,6 @@ if(isset($_POST['add'])){
         $message = "Fout: " . $e->getMessage();
     }
 }
-
 
 if(isset($_GET['delete'])){
     $id = $_GET['delete'];
@@ -75,14 +63,13 @@ a.delete:hover{ text-decoration:underline; }
 <body>
 
 <h1>Admin Panel</h1>
-
 <?php if($message): ?>
 <div class="message"><?= htmlspecialchars($message) ?></div>
 <?php endif; ?>
 
 <form method="POST">
     <h2>Voeg Pokémon toe</h2>
-    <input type="number" name="id" placeholder="id"    required>
+    <input type="number" name="id" placeholder="id" required>
     <input type="number" name="dex_number" placeholder="Dex Number" required>
     <input type="text" name="name" placeholder="Name" required>
     <input type="text" name="type1" placeholder="Type 1" required>
@@ -92,26 +79,20 @@ a.delete:hover{ text-decoration:underline; }
 </form>
 
 <table>
-    <tr>
-        <th>#</th>
-        <th>Dex</th>
-        <th>Name</th>
-        <th>Type 1</th>
-        <th>Type 2</th>
-        <th>Image</th>
-        <th>Actie</th>
-    </tr>
-    <?php foreach($pokemon as $p): ?>
-    <tr>
-        <td><?= htmlspecialchars($p['id']) ?></td>
-        <td><?= htmlspecialchars($p['dex_number']) ?></td>
-        <td><?= htmlspecialchars($p['name']) ?></td>
-        <td><?= htmlspecialchars($p['type1']) ?></td>
-        <td><?= htmlspecialchars($p['type2']) ?></td>
-        <td><img src="<?= htmlspecialchars($p['image_path']) ?>" width="50"></td>
-        <td><a class="delete" href="admin.php?delete=<?= $p['id'] ?>" onclick="return confirm('Weet je zeker dat je deze Pokémon wilt verwijderen?')">Delete</a></td>
-    </tr>
-    <?php endforeach; ?>
+<tr>
+<th>#</th><th>Dex</th><th>Name</th><th>Type 1</th><th>Type 2</th><th>Image</th><th>Actie</th>
+</tr>
+<?php foreach($pokemon as $p): ?>
+<tr>
+    <td><?= htmlspecialchars($p['id']) ?></td>
+    <td><?= htmlspecialchars($p['dex_number']) ?></td>
+    <td><?= htmlspecialchars($p['name']) ?></td>
+    <td><?= htmlspecialchars($p['type1']) ?></td>
+    <td><?= htmlspecialchars($p['type2']) ?></td>
+    <td><img src="<?= htmlspecialchars($p['image_path']) ?>" width="50"></td>
+    <td><a class="delete" href="admin.php?delete=<?= $p['id'] ?>" onclick="return confirm('Weet je zeker dat je deze Pokémon wilt verwijderen?')">Delete</a></td>
+</tr>
+<?php endforeach; ?>
 </table>
 
 </body>

@@ -77,4 +77,10 @@ button:hover{
 .pokedex > * {
     text-decoration: none;
     color: black;
+
+}.card img {
+    filter: blur(8px);
+}
+.card.caught img {
+    filter: blur(0);
 }

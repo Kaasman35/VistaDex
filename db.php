@@ -1,5 +1,4 @@
 <?php
-
 $host = "localhost";
 $db = "pokedexdb";
 $user = "root";
@@ -10,3 +9,4 @@ try {
 } catch(PDOException $e) {
     die("Database error: " . $e->getMessage());
 }
+?>
