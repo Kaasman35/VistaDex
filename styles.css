@@ -1,20 +1,18 @@
-
+/* ===== Basis & index grid ===== */
 body{
     font-family: Arial, sans-serif;
-    background: #f2f2f2;
+    background: #00223a;
     text-align: center;
     margin: 0;
     padding: 0;
 }
 
-h1{
-    margin-top: 20px;
-}
+h1{ margin-top:20px; 
+color: #ffee00; 
+text-shadow: 2px 2px 4px #000000; 
+font: bold 30px Arial, sans-serif;}
 
-
-form{
-    margin: 20px;
-}
+form{ margin:20px; }
 
 input[type=text], select{
     padding:10px;
@@ -33,18 +31,15 @@ button{
     cursor:pointer;
 }
 
-button:hover{
-    background:#e04343;
-}
+button:hover{ background:#e04343; }
 
 .pokedex{
-    display: grid;
+    display:grid;
     grid-template-columns: repeat(auto-fill, 200px);
-    gap: 20px;
-    justify-content: center;
-    padding: 20px;
+    gap:20px;
+    justify-content:center;
+    padding:20px;
 }
-
 
 .card{
     background:white;
@@ -61,26 +56,73 @@ button:hover{
 
 .card img{
     width:120px;
-}
-
-.card h2{
-    font-size:18px;
-    margin:10px 0 5px 0;
-}
-
-.card p{
-    font-size:14px;
-    margin:0;
-    color:#333;
-}
-
-.pokedex > * {
-    text-decoration: none;
-    color: black;
-
-}.card img {
     filter: blur(8px);
+    transition:0.3s;
 }
-.card.caught img {
+
+.card.caught img{
     filter: blur(0);
 }
+
+.card h2{ font-size:18px; margin:10px 0 5px 0; }
+.card p{ font-size:14px; margin:0; color:#333; }
+
+.pokedex > * { text-decoration:none; color:black; }
+a{ text-decoration:none; color:black; }
+
+/* ===== Detailpagina ===== */
+.card.detail{
+    width:300px;
+    padding:20px;
+    margin-top:10px;
+    display:inline-block;
+}
+
+/* Pokéball buttons */
+button.catch{
+    padding:8px 15px;
+    cursor:pointer;
+    border:none;
+    border-radius:5px;
+    color:white;
+    margin:5px;
+    font-weight:bold;
+    font-size:14px;
+}
+button.normal{ background:#ff5350; }
+button.super{ background:#4CAF50; }
+button.ultra{ background:#2196F3; }
+button.catch:hover{ opacity:0.85; }
+
+/* Terug-knop */
+button.back{
+    padding:6px 12px;
+    border:none;
+    border-radius:5px;
+    background:#347201;
+    color:white;
+    cursor:pointer;
+    margin-bottom:15px;
+}
+button.back:hover{ background:#347201; }
+
+/* Bericht */
+.message{ margin:10px 0; font-weight:bold; font-size:1.1em; }
+
+/* ===== Type kleuren ===== */
+[type^="type-"], .card[type] { background-color:white; color:black; }
+
+.type-fire    { border: 5px solid #F08030; background-color: #e9c4a8; }
+.type-water   { border: 5px solid #6890F0; background-color: #cfd8ec; }
+.type-grass   { border: 5px solid #78C850; background-color: #cff0c0; }
+.type-electric{ border: 5px solid #F8D030; background-color: #f7e9b4; }
+.type-psychic { border: 5px solid #F85888; background-color: #fcd1de; }
+.type-ice     { border: 5px solid #98D8D8; background-color: #e2fdfd; }
+.type-dragon  { border: 5px solid #7038F8; background-color: #cebdf3; }
+.type-bug     { border: 5px solid #705848; background-color: #d1b5a1; }
+.type-fighting{ border: 5px solid #C03028; background-color: #e5a09c; }
+.type-poison  { border: 5px solid #A040A0; background-color: #e2b5e2; }
+.type-ground  { border: 5px solid #E0C068; background-color: #f8e5b1; }
+.type-rock    { border: 5px solid #B8A038; background-color: #cec69e; }
+.type-ghost   { border: 5px solid #705898; background-color: #b4a6c9; }
+.type-normal  { border: 5px solid #A8A878; background-color: #c7c7ad; }
